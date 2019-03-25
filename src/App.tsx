@@ -16,7 +16,9 @@ interface RepresentationListItem {
 
 enum MoleculeRepresentation {
   Spacefill,
-  BallAndStick
+  BallAndStick,
+  SpacefillInstanced,
+  BallAndStickInstanced
 }
 
 interface Props {
@@ -41,16 +43,22 @@ class App extends React.Component<Props, States> {
     this.state = {
       isNavDrawerOpen: false,
       isMoreMenuOpened: false,
-      activedRepresentation: MoleculeRepresentation.BallAndStick,
+      activedRepresentation: MoleculeRepresentation.BallAndStickInstanced,
       activatedMolecule: 0
     };
 
     this.representationList = [
       {
-        title: "Spacefill"
+        title: "Spacefill (slow batch rendering)"
       },
       {
-        title: "Ball and Stick"
+        title: "Ball and Stick (slow batch rendering)"
+      },
+      {
+        title: "Spacefill (fast instanced rendering)"
+      },
+      {
+        title: "Ball and Stick (fast instances rendering)"
       }
     ];
 
