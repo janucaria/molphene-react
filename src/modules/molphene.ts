@@ -23,8 +23,9 @@ export function afterCanvasResized() {
 }
 
 export function openPDBData(pdbData: string) {
-  var intArr = instance.intArrayFromString(pdbData);
-  var ptrStr = instance.allocate(intArr, 'i8', instance.ALLOC_NORMAL);
+  let strLen = instance.lengthBytesUTF8(pdbData);
+  let ptrStr = instance._malloc(strLen+1);
+  instance.stringToUTF8(pdbData, ptrStr, strLen+1);
   return instance._molphene_application_open_pdb_data(ptrStr);
 }
 
