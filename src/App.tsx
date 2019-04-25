@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Molphene from './modules/molphene';
-import ChemDoodle from './modules/ChemDoodleWeb';
+import ChemDoodle from './modules/ChemDoodle';
 import './App.scss';
 
 interface NavigationListItem {
@@ -289,7 +289,7 @@ class App extends React.Component<Props, States> {
                         <li
                           key={idx}
                           data-representation={idx}
-                          className={"mdc-list-item" + (this.state.activedRepresentation == idx ? " mdc-list-item--activated" : "")}
+                          className={"mdc-list-item" + (this.state.activedRepresentation === idx ? " mdc-list-item--activated" : "")}
                           role="menuitem"
                           onClick={this.onAppBarMenuListItemClicked}
                         >
@@ -310,7 +310,7 @@ class App extends React.Component<Props, States> {
                 return (
                   <a key={idx}
                     data-key={idx}
-                    className={"mdc-list-item" + (this.state.activatedMolecule == idx ? " mdc-list-item--activated" : "")}
+                    className={"mdc-list-item" + (this.state.activatedMolecule === idx ? " mdc-list-item--activated" : "")}
                     href={"#" + navListItem.link}
                     onClick={this.onDrawerListItemClicked}
                   >
