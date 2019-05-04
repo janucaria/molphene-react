@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Molphene from './modules/molphene';
 import ChemDoodle from './modules/ChemDoodle';
 import './App.scss';
+import TopAppBar from "./components/TopAppBar";
 
 interface NavigationListItem {
   title: string;
@@ -261,48 +262,14 @@ class App extends React.Component<Props, States> {
   public render() {
     return (
       <React.Fragment>
-        <header className="mdc-top-app-bar mdc-top-app-bar--dense">
-          <div className="mdc-top-app-bar__row">
-            <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-              <button
-                onClick={this.onAppToolbarDrawerBtnClicked}
-                className="material-icons mdc-top-app-bar__navigation-icon">
-                menu
-              </button>
-              <span className="mdc-top-app-bar__title">Molphene</span>
-            </section>
-            <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-              <div id="demo-menu" className="mdc-menu-surface--anchor">
-                <button
-                  id="menu-button"
-                  onClick={this.onAppBarMoreMenuClicked}
-                  className="material-icons mdc-top-app-bar__action-item"
-                  aria-label="More menu">
-                  more_vert
-                </button>
-                <div
-                  className={"mdc-menu mdc-menu-surface" + (this.state.isMoreMenuOpened ? " mdc-menu-surface--open" : "")}
-                >
-                  <ul className="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
-                    {this.representationList.map((repret, idx) => {
-                      return (
-                        <li
-                          key={idx}
-                          data-representation={idx}
-                          className={"mdc-list-item" + (this.state.activedRepresentation === idx ? " mdc-list-item--activated" : "")}
-                          role="menuitem"
-                          onClick={this.onAppBarMenuListItemClicked}
-                        >
-                          <span className="mdc-list-item__text">{repret.title}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </div>
-        </header>
+        <TopAppBar
+          onAppToolbarDrawerBtnClicked={this.onAppToolbarDrawerBtnClicked}
+          onAppBarMoreMenuClicked={this.onAppBarMoreMenuClicked}
+          isMoreMenuOpened={this.state.isMoreMenuOpened}
+          representationList={this.representationList}
+          activedRepresentation={this.state.activedRepresentation}
+          onAppBarMenuListItemClicked={this.onAppBarMenuListItemClicked}
+        />
         <aside className={"mdc-drawer mdc-drawer--modal" + (this.state.isNavDrawerOpen ? " mdc-drawer--open" : "")}>
           <div className="mdc-drawer__content">
             <nav className="mdc-list mdc-list--two-line">
