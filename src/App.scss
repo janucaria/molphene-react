@@ -3,9 +3,13 @@
 @import "@material/list/mdc-list";
 @import "@material/menu-surface/mdc-menu-surface";
 @import "@material/menu/mdc-menu";
+@import "@material/layout-grid/mdc-layout-grid";
+
+.mdc-layout-grid {
+  padding: 0;
+}
 
 .mdc-top-app-bar .mdc-menu-surface--open {
-  top: 0;
   right: 0;
 }
 

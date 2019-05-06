@@ -3,6 +3,7 @@ import * as Molphene from './modules/molphene';
 import ChemDoodle from './modules/ChemDoodle';
 import './App.scss';
 import TopAppBar from "./components/TopAppBar";
+import NavDrawer from "./components/NavDrawer";
 
 interface NavigationListItem {
   title: string;
@@ -177,14 +178,18 @@ class App extends React.Component<Props, States> {
   }
 
   onAppToolbarDrawerBtnClicked = (e: any) => {
-    this.setState({
-      isNavDrawerOpen: true
+    this.setState(oldState => {
+      return {
+        isNavDrawerOpen: !oldState.isNavDrawerOpen
+      };
     });
   }
 
   onAppBarMoreMenuClicked = (e: any) => {
-    this.setState({
-      isMoreMenuOpened: true
+    this.setState(oldState => {
+      return {
+        isMoreMenuOpened: !oldState.isMoreMenuOpened
+      }
     });
   }
 
@@ -259,7 +264,7 @@ class App extends React.Component<Props, States> {
     Molphene.renderFrame();
   }
 
-  public render() {
+  render() {
     return (
       <React.Fragment>
         <TopAppBar
@@ -270,31 +275,12 @@ class App extends React.Component<Props, States> {
           activedRepresentation={this.state.activedRepresentation}
           onAppBarMenuListItemClicked={this.onAppBarMenuListItemClicked}
         />
-        <aside className={"mdc-drawer mdc-drawer--modal" + (this.state.isNavDrawerOpen ? " mdc-drawer--open" : "")}>
-          <div className="mdc-drawer__content">
-            <nav className="mdc-list mdc-list--two-line">
-              {this.navigationList.map((navListItem, idx) => {
-                return (
-                  <a key={idx}
-                    data-key={idx}
-                    className={"mdc-list-item" + (this.state.activatedMolecule === idx ? " mdc-list-item--activated" : "")}
-                    href={"#" + navListItem.link}
-                    onClick={this.onDrawerListItemClicked}
-                  >
-                    <span className="mdc-list-item__text">
-                      <span className="mdc-list-item__primary-text">
-                        {navListItem.title}
-                      </span>
-                      <span className="mdc-list-item__secondary-text">
-                        atoms: {navListItem.atoms}, bonds: {navListItem.bonds}
-                      </span>
-                    </span>
-                  </a>
-                )
-              })}
-            </nav>
-          </div>
-        </aside>
+        <NavDrawer
+          isNavDrawerOpen={this.state.isNavDrawerOpen}
+          navigationList={this.navigationList}
+          activatedMolecule={this.state.activatedMolecule}
+          onDrawerListItemClicked={this.onDrawerListItemClicked}
+        />
         <div className="fill-height" onClick={this.closeAll}>
           <canvas ref="canvas" id="canvas"></canvas>
         </div>
