@@ -170,14 +170,14 @@ class App extends React.Component<Props, States> {
     ];
   }
 
-  closeAll = (e: any) => {
+  closeAll = (e: React.MouseEvent<HTMLDivElement>) => {
     this.setState({
       isNavDrawerOpen: false,
       isMoreMenuOpened: false
     });
   }
 
-  onAppToolbarDrawerBtnClicked = (e: any) => {
+  onAppToolbarDrawerBtnClicked = (e: React.MouseEvent<HTMLButtonElement>) => {
     this.setState(oldState => {
       return {
         isNavDrawerOpen: !oldState.isNavDrawerOpen
@@ -185,7 +185,7 @@ class App extends React.Component<Props, States> {
     });
   }
 
-  onAppBarMoreMenuClicked = (e: any) => {
+  onAppBarMoreMenuClicked = (e: React.MouseEvent<HTMLButtonElement>) => {
     this.setState(oldState => {
       return {
         isMoreMenuOpened: !oldState.isMoreMenuOpened
@@ -193,8 +193,8 @@ class App extends React.Component<Props, States> {
     });
   }
 
-  onDrawerListItemClicked = (e: any) => {
-    const target = e.currentTarget as HTMLAnchorElement;
+  onDrawerListItemClicked = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.currentTarget;
     const activatedMol = parseInt(target.dataset.key!, 10);
     const currentActivatedMolecule = this.state.activatedMolecule;
 
@@ -209,8 +209,8 @@ class App extends React.Component<Props, States> {
     }
   }
 
-  onAppBarMenuListItemClicked = (e: any) => {
-    const listItem = e.currentTarget as HTMLUListElement;
+  onAppBarMenuListItemClicked = (e: React.MouseEvent<HTMLLIElement>) => {
+    const listItem = e.currentTarget;
     const repret = parseInt(listItem.dataset.representation!, 10);
     this.setState({
       isMoreMenuOpened: false,

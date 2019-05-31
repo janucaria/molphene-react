@@ -19,15 +19,15 @@ enum MoleculeRepresentation {
 }
 
 interface Props {
-  onAppToolbarDrawerBtnClicked(e: any): void;
-  onAppBarMoreMenuClicked(e: any): void;
-  onAppBarMenuListItemClicked(e: any): void;
+  onAppToolbarDrawerBtnClicked(e: React.MouseEvent<HTMLButtonElement>): void;
+  onAppBarMoreMenuClicked(e: React.MouseEvent<HTMLButtonElement>): void;
+  onAppBarMenuListItemClicked(e: React.MouseEvent<HTMLLIElement>): void;
   isMoreMenuOpened: boolean;
   representationList: RepresentationListItem[];
   activedRepresentation: MoleculeRepresentation;
 }
 
-export default function TopAppBar(props: Props) {
+export default function TopAppBar(props: Props): JSX.Element {
   const {
     onAppToolbarDrawerBtnClicked,
     onAppBarMoreMenuClicked,

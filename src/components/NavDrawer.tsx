@@ -11,10 +11,10 @@ interface Props {
   isNavDrawerOpen: boolean;
   activatedMolecule: number;
   navigationList: NavigationListItem[];
-  onDrawerListItemClicked(e: any): void;
+  onDrawerListItemClicked(e: React.MouseEvent<HTMLAnchorElement>): void;
 }
 
-export default function NavDrawer(props: Props) {
+export default function NavDrawer(props: Props): JSX.Element {
   const {
     isNavDrawerOpen,
     navigationList,
@@ -23,6 +23,10 @@ export default function NavDrawer(props: Props) {
   } = props;
 
   return (<aside className={"mdc-drawer mdc-drawer--modal" + (isNavDrawerOpen ? " mdc-drawer--open" : "")}>
+    <div className="mdc-drawer__header">
+      <h3 className="mdc-drawer__title">Molphene</h3>
+    </div>
+    <hr className="mdc-list-divider" />
     <div className="mdc-drawer__content">
       <nav className="mdc-list mdc-list--two-line">
         {navigationList.map((navListItem, idx) => {
