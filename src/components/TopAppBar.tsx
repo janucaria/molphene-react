@@ -1,12 +1,5 @@
 import React from "react";
 
-interface NavigationListItem {
-  title: string;
-  link: string;
-  atoms: number;
-  bonds: number;
-}
-
 interface RepresentationListItem {
   title: string;
 }
