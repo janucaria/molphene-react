@@ -1,10 +1,16 @@
-import Molphene, { EmscriptenModule } from './emscripten-module';
+import Molphene, { EmscriptenModule } from './molphene-web';
 
 export let instance: EmscriptenModule;
 
+const moduleOverriden = {
+  locateFile(path: string, scriptDirectory: string): string {
+    return process.env.PUBLIC_URL + "/" + path;
+  }
+};
+
 export function init(fn: (mdl: EmscriptenModule) => void) {
   if (!instance) {
-    instance = Molphene();
+    instance = Molphene(moduleOverriden);
   }
 
   instance.then(fn);
