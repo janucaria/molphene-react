@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as Molphene from '../modules/molphene';
-import ChemDoodle from '../modules/ChemDoodle';
+import ChemDoodleType from '../modules/ChemDoodle';
 import TopAppBar from "./TopAppBar";
 import NavDrawer from "./NavDrawer";
+
+declare var ChemDoodle: ChemDoodleType;
 
 interface NavigationListItem {
   title: string;

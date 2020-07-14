@@ -1,8 +1,8 @@
-@import "@material/top-app-bar/mdc-top-app-bar";
-@import "@material/drawer/mdc-drawer";
-@import "@material/list/mdc-list";
-@import "@material/menu-surface/mdc-menu-surface";
-@import "@material/menu/mdc-menu";
+@import "~@material/top-app-bar/dist/mdc.top-app-bar.css";
+@import "~@material/drawer/dist/mdc.drawer.css";
+@import "~@material/list/dist/mdc.list.css";
+@import "~@material/menu-surface/dist/mdc.menu-surface.css";
+@import "~@material/menu/dist/mdc.menu.css";
 @import "@material/layout-grid/mdc-layout-grid";
 
 .mdc-layout-grid {

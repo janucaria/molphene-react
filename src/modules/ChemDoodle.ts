@@ -1,4 +1,5 @@
-declare let ChemDoodle : {
+
+interface ChemDoodleType {
   io : {
     PDBInterpreter : {
       new(): {
@@ -17,4 +18,4 @@ declare let ChemDoodle : {
   readMOL(arg: string, arg2?: number): any;
 };
 
-export default ChemDoodle;
+export default ChemDoodleType;
